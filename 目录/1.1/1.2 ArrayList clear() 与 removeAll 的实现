@@ -1,0 +1,19 @@
+1.2 ArrayList clear() 与 removeAll 的实现
+
+    /**
+     * Removes all of the elements from this list.  The list will
+     * be empty after this call returns.
+     */
+    public void clear() {
+        modCount++;
+
+        // clear to let GC do its work
+        for (int i = 0; i < size; i++)
+            elementData[i] = null;
+
+        size = 0;
+    }
+    
+在查看源码时，发现在ArrayList,LinkedList,HashMap等等的内部实现增，删，改中我们总能看到modCount的身影，modCount字面意思就是修改次数，但为什么要
+记录modCount的修改次数呢？ 通过查看modCount字段的注释，发现这个字段是iterator时会使用，并且提到了fail-fast机制。当多个线程对同一个集合的内容进行
+操作时，就可能会产生fail-fast事件。
