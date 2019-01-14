@@ -1,3 +1,5 @@
+2.1关于Java8 stream的使用
+
 Java的stream提供了非常方便的数据处理api。
 
 list.stream().collect(Collectors.groupingBy(DTO::getName));  根据name字段进行分组，分组后的顺序和之前的不一致。如果想一致，建议使用LinkedHashMap,如下：
