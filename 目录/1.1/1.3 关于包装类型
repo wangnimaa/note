@@ -1,0 +1,28 @@
+1.3 关于包装类型
+
+包装类型解决了基本数据类型无法做到的那些事情？
+
+泛型类型参数，序列化，类型转换，高频区间数据缓存。
+
+除了Float和Double外，其他的包装数据类型都会缓存，6个包装类直接赋值时，是调用包装类的valueOf，例如Integer的源码：
+
+    public static Integer valueOf(int i) {
+        if (i >= IntegerCache.low && i <= IntegerCache.high)
+            return IntegerCache.cache[i + (-IntegerCache.low)];
+        return new Integer(i);
+    }
+    
+当i在缓存区间内直接返回缓存中的Integer对象，否则就会new 一个。JDK9直接把new的构造方法过时，推荐使用valueOf，合理使用缓存，提高效率。
+
+Integer会缓存-128~127的值，如果在-128~127之间赋值，Integer对象由IntegerCache.cache产生，复用对象，所以这个区间的Integer值可以直接用==进行
+
+判断，但是这个区间之外的数据都会在堆上产生，并不会复用已有对象，因此，所有的包装类型推荐使用equals比较值，例如：
+
+    Integer a=22;
+    Integer b=22;
+    System.out.println(a==b); //返回true
+    
+    Integer a=222;
+    Integer b=222;
+    System.out.println(a==b); //返回false
+
