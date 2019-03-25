@@ -2,7 +2,7 @@
 
 解决方案：
 
-1.从主库读取。/*FORCE_MASTER*/ SELECT * FROM table_name;
+1.设置mycat从主库读取。/*#mycat:db_type=master*/ SELECT * FROM table_name;
 
 2.MySQL的Semi-sync功能：在主机写入时，确认更新已经同步到备机之后，再返回写操作成功。显而易见，如果写操作必须等待更新同步完成，肯定会极大地影响性能。
 
