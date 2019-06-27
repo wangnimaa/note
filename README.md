@@ -19,7 +19,7 @@
 
 1.8 ArrayList.toArray()
 
-1.9 ThreadLocal
+1.9 ThreadLocal的问题根源
 
 2.进阶
 
