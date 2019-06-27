@@ -19,6 +19,8 @@
 
 1.8 ArrayList.toArray()
 
+1.9 ThreadLocal
+
 2.进阶
 
 2.1 关于Java8 stream的使用
