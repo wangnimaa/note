@@ -1,0 +1,13 @@
+
+【第12次讨论主题：ThreadLocal的问题根源】
+ 1）ThreadLocal如何回收value，什么时候回收？    
+ 
+由于ThreadLocalMap的key是弱引用，而Value是强引用。这就导致了一个问题，ThreadLocal在没有外部对象强引用时，发生GC时弱引
+用Key会被回收，而Value不会回收，如果创建ThreadLocal的线程一直持续运行，那么这个Entry对象中的value就有可能一直得不到回
+收，发生内存泄露    
+ 
+2）ThreadLocal为什么会产生脏数据？      
+
+线程复用会产生脏数据。由于结程池会重用Thread对象，那么与Thread绑定的类的静态属性ThreadLocal变量也会被重用。如果在实现的
+线程run()方法体中不显式地调用remove() 清理与线程相关的ThreadLocal信息，那么倘若下一个结程不调用set() 设置初始值，就可能
+get() 到重用的线程信息，包括 ThreadLocal所关联的线程对象的value值。
