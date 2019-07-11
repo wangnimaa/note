@@ -19,7 +19,6 @@
 
 1.8 ArrayList.toArray()
 
-1.9 ThreadLocal的问题根源
 
 2.进阶
 
@@ -28,6 +27,8 @@
 2.2 关于读写分离遇到的问题
 
 2.3 对象引用类型
+
+2.4 ThreadLocal的问题根源
 
 3.代码
 
