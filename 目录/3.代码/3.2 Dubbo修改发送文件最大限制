@@ -1,0 +1,10 @@
+	
+  在dubbo-provider.xml 添加如下配置
+  
+  <dubbo:provider filter="dubboExceptionFilter,-exception" payload="30971520" ></dubbo:provider>
+  
+  在META-INF下com.alibaba.dubbo.rpc.Filter 添加如下配置
+  
+  dubboExceptionFilter=com.alibaba.dubbo.rpc.filter.ExceptionFilter
+  
+  不建议用 dubbo 协议传输大文件或超大字符串,上传文件建议走对象存储，如cos
