@@ -30,6 +30,8 @@
 
 2.4 ThreadLocal的问题根源
 
+2.5 Classloader的秘密
+
 3.代码
 
 3.1 时间周期计算
