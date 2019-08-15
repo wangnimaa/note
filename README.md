@@ -32,6 +32,8 @@
 
 2.5 Classloader的秘密
 
+2.6 JUC之atomic
+
 3.代码
 
 3.1 时间周期计算
