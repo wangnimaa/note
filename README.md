@@ -35,13 +35,15 @@
 
 2.5 Classloader的秘密
 
-2.6 JUC之atomic
+2.6 JUC之Atomic
 
 2.7 锁
 
 2.8 Java生产环境中把xmx和xms设置成一样有什么样的好处？
 
 2.9 spring 5 响应式编程
+
+2.10 关于Seata实现分布式事务
 
 3.代码
 
