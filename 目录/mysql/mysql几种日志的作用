@@ -1,0 +1,12 @@
+bonlog:
+1.用于主从复制，从节点订阅bomlog日志信息。记录如insert、update、delete、create、truncate等操作。
+2.用于数据恢复，因为binlog记录了数据库的变更信息，所以可以用来恢复数据。Position 用于记录binlog日志的指针，当要恢复数据时，只要指定--start-position和--stop-position，或者指定--start-datetime和--stop-datetime就可以恢复指定区间的数据。
+
+redolog
+1.当执行变更操作时，首先把数据加载到内存中，然后在内存更新完成后写入到redolog buffer中，然后由redolog buffer 在写入到redolog buffer中。
+2.配合事务使用，redolog用于恢复在内存更新后，还没来得及刷到磁盘上的数据。
+binlog是存储所以数据变更的情况，理论上只要记录在binlog上的数据，都可以恢复。
+
+undolog
+1.主要用于回滚，mysql事务的原子性都是通过undolog实现的。
+2.undolog的另一个作用是实现多版本控制（MVCC），undo记录包含了记录更改数据的事务未提交，对于隔离级别大于等于read commit的事务而言，不应该返回更改后数据，而应该返回老版本的数据。
